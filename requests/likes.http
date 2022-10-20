@@ -1,0 +1,12 @@
+POST {{$dotenv URL}}/likes/634bf1b221a3f7c7a34e8d9a
+Content-Type: application/json
+Authorization: Bearer {{$dotenv TOKEN}}
+
+###
+DELETE {{$dotenv URL}}/likes/634bf1b221a3f7c7a34e8d9a
+Content-Type: application/json
+Authorization: Bearer {{$dotenv TOKEN}}
+
+###
+GET {{$dotenv URL}}/likes
+Authorization: Bearer {{$dotenv TOKEN}}

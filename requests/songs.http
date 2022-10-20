@@ -1,0 +1,12 @@
+GET {{$dotenv URL}}/songs
+Content-Type: application/json
+Authorization: Bearer {{$dotenv TOKEN}}
+
+###
+POST {{$dotenv URL}}/songs
+Content-Type: application/json
+Authorization: Bearer {{$dotenv TOKEN}}
+
+{
+    "title": "Thousand Years"
+}

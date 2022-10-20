@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "69ee1ab6-078c-4c54-8aca-20381088712b",
+		"name": "MusicParty",
+		"description": "## What is an API ?\n\n##### Application Programming Interface (API)\n\nAn API is a universal data format that allows apps to communicate with one another.\n\nAPIs are used in backend development that returns JSON objects and can be used to retrieve (GET), store (POST), update (PATCH), or destroy (DELETE) data. APIs do not have a user interface, so developers can use platforms like Postman to make calls and interact with or test their database.\n\n## How is my API acting?\n\nThis API will help Admin to add there songs and delete there songs as per there demand .\n\nAnd User to add there liked song into the list and delete there liked song and get all the songs .\n\nfor differentiate between the user and an admin we have created an endpoint of login in which we are passing there role for there respected work.\n\nfor user : \"Role\" : \"user\"\n\nfor Admin : \"Role\" : \"Admin\"\n\n### Endpoints\n\n1. Login (user/admin)\n2. Get All Songs\n3. Get Liked Songs\n4. Delete Liked Songs\n5. Add Liked Songs\n    \n\n### Authenticating\n\nusing JWTwebtoken for authentication.\n\nas after login the user/admin will get there Token , after getting token when we pass token into header then it will allow us to get/post/delete the songs.\n\n1. login as user : we will pass the username and password(mock password) and by default it will be an user . after login it will return the token so that you can access other endpoints.\n2. login as Admin : It will be same as user but we will define the \"Role\" as an \"admin\" , and then it will return the token for an admin and then we can access admin endpoints and will be able to add and delete the song.\n    \n\n**URL=https://musicparty07.herokuapp.com**\n\n### ADD and DELETE songs by Admin\n\n1. {{URL}}/songs : this endpoint will add your song into the long list\n    \n\nMethod : POST\n\n2\\. {{URL}}/songs/:id : this endpoint will delete the song . Method : DELETE\n\n3\\. {{URL}}/songs : this endpoint will give you the list of all songs\n\n### Liked List of song / Endpoints\n\nStartFragmentEndFragment\n\n1. {{URL}}/likes/\\`songId\\` : this endpoint will add your this song into the liked song list\n    \n\nMethod : POST\n\n2\\. {{URL}}/likes/\\`songId\\` : this endpoint will delete the liked song .\n\nMethod : DELETE\n\n3\\. {{URL}}/likes : this endpoint will get all the liked song .\n\nMethod : GET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19193834"
+	},
+	"item": [
+		{
+			"name": "Login as User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"meeta\",\r\n    \"password\": \"mockpassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Liked Songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/likes",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"likes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Liked Song",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/likes/634bf1b221a3f7c7a34e8d9a",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"likes",
+						"634bf1b221a3f7c7a34e8d9a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add liked Song",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/likes/634bf1b221a3f7c7a34e8d9a",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"likes",
+						"634bf1b221a3f7c7a34e8d9a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add song",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzNGJmMDJhN2YzOGJlNzBlZGExOGYyYiIsInVzZXJuYW1lIjoia2lyYSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2NjU5Mzc3Mzl9.owZewSdC4xAKuiysycX1atDXdN4W7qj8LhR6Y5WxUb4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"closer\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/songs",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"songs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/songs",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"songs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"kira\",\r\n    \"password\": \"mockpassword\",\r\n    \"role\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYzNGJmMDUwN2YzOGJlNzBlZGExOGYyZiIsInVzZXJuYW1lIjoibWVldGEiLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2NjU5MjMwODh9.t5nm_YsMm4Ou1G1NwjbBai0QsYYFAuB0WZiMcihaAJ0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

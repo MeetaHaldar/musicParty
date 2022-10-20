@@ -1,0 +1,7 @@
+POST {{$dotenv URL}}/users/login
+Content-Type: application/json
+
+{
+    "username": "meeta",
+    "password": "kira123"
+}
